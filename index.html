@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revo3Dprint: 30-Day Customer Launch Plan</title>
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --color-primary: #007bff;
+            --color-secondary: #4CAF50;
+            --color-accent: #ff9800;
+            --color-danger: #f44336;
+            --color-background: #f4f7f9;
+            --color-text: #333;
+            --color-light-gray: #e9ecef;
+            --color-dark-gray: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: var(--color-primary);
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: var(--color-dark-gray);
+        }
+
+        .timeline {
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--color-light-gray);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+
+        .phase {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .phase.left {
+            left: 0;
+        }
+
+        .phase.right {
+            left: 50%;
+        }
+
+        .phase::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid var(--color-primary);
+            top: 35px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .right::after {
+            left: -16px;
+        }
+
+        .content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+        }
+        
+        .phase-header {
+            background: var(--color-primary);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px 8px 0 0;
+            margin: -20px -30px 20px -30px;
+        }
+        
+        .phase-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .phase-header p {
+            font-weight: 300;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .phase-header.phase-2 { background: var(--color-secondary); }
+        .phase-header.phase-3 { background: var(--color-accent); }
+        .phase-header.phase-4 { background: var(--color-danger); }
+
+        .phase.left .phase-header::after, .phase.right .phase-header::after {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            border: medium solid white;
+        }
+        .phase.left .phase-header::after {
+            right: -20px;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--color-primary);
+        }
+        .phase.right .phase-header::after {
+            left: -20px;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--color-primary) transparent transparent;
+        }
+        
+        .phase.left .phase-header.phase-2::after { border-color: transparent transparent transparent var(--color-secondary); }
+        .phase.right .phase-header.phase-2::after { border-color: transparent var(--color-secondary) transparent transparent; }
+        .phase.left .phase-header.phase-3::after { border-color: transparent transparent transparent var(--color-accent); }
+        .phase.right .phase-header.phase-3::after { border-color: transparent var(--color-accent) transparent transparent; }
+        .phase.left .phase-header.phase-4::after { border-color: transparent transparent transparent var(--color-danger); }
+        .phase.right .phase-header.phase-4::after { border-color: transparent var(--color-danger) transparent transparent; }
+
+
+        .action-item {
+            margin-bottom: 20px;
+        }
+        
+        .action-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .action-item h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-dark-gray);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .action-item h4 i {
+            margin-right: 10px;
+            color: var(--color-primary);
+            font-size: 1.3rem;
+        }
+        
+        .phase-2 .action-item h4 i { color: var(--color-secondary); }
+        .phase-3 .action-item h4 i { color: var(--color-accent); }
+        .phase-4 .action-item h4 i { color: var(--color-danger); }
+
+        .action-item p, .action-item ul, .action-item .code-block {
+            font-size: 0.95rem;
+            color: #666;
+            padding-left: 28px;
+        }
+
+        .action-item ul {
+            list-style: none;
+            padding-left: 35px;
+        }
+
+        .action-item li {
+            margin-bottom: 5px;
+        }
+
+        .action-item li::before {
+            content: "•";
+            color: var(--color-primary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .phase-2 li::before { color: var(--color-secondary); }
+        .phase-3 li::before { color: var(--color-accent); }
+        .phase-4 li::before { color: var(--color-danger); }
+        
+        .code-block {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .contingency {
+            border-left: 4px solid var(--color-danger);
+            padding: 10px 15px;
+            background: #fff3f3;
+            margin-top: 10px;
+        }
+
+        @media screen and (max-width: 800px) {
+            .timeline::after {
+                left: 31px;
+            }
+            .phase {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .phase.right {
+                left: 0%;
+            }
+            .phase::after {
+                left: 15px;
+            }
+            .right::after {
+                left: 15px;
+            }
+             .phase.left .phase-header::after, .phase.right .phase-header::after {
+                left: -20px;
+                border-width: 10px 10px 10px 0;
+            }
+            .phase.left .phase-header::after {
+                 border-color: transparent var(--color-primary) transparent transparent;
+            }
+             .phase.left .phase-header.phase-2::after { border-color: transparent var(--color-secondary) transparent transparent; }
+             .phase.left .phase-header.phase-3::after { border-color: transparent var(--color-accent) transparent transparent; }
+             .phase.left .phase-header.phase-4::after { border-color: transparent var(--color-danger) transparent transparent; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Revo3Dprint</h1>
+            <p>30-Day Customer Launch Plan Infographic</p>
+        </div>
+
+        <div class="timeline">
+            <!-- Phase 1 -->
+            <div class="phase left">
+                <div class="content">
+                    <div class="phase-header">
+                        <h2>PHASE 1: CORE MISSION (Days 1-2)</h2>
+                        <p>Establish a clear, trustworthy brand message.</p>
+                    </div>
+                    <div class="action-item">
+                        <h4><i class="fas fa-bullhorn"></i>The Core Message</h4>
+                        <p><strong>EN:</strong> "A gift only your child can design."</p>
+                        <p><strong>DE:</strong> "Ein Geschenk, das nur Ihr Kind gestalten kann."</p>
+                    </div>
+                    <div class="action-item">
+                        <h4><i class="fas fa-shield-alt"></i>The Trust Builder</h4>
+                        <p><strong>Promise:</strong> 100% Money-Back Guarantee if the model doesn't resemble the drawing. We display this as a trust badge on the website.</p>
+                        <p><strong>Promise:</strong> 100 % Geld-zurück-Garantie, wenn das Modell der Zeichnung nicht ähnelt. Wir zeigen dies als Vertrauenssiegel auf der Website an.</p>
+                    </div>
+                    <div class="action-item">
+                        <h4><i class="fas fa-tools"></i>The "Show & Tell" Kit</h4>
+                        <p>Prepare 10 kits, each containing a sample, the original drawing, and a display stand with a unique QR code for tracking.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="phase right">
+                <div class="content">
+                    <div class="phase-header phase-2">
+                        <h2>PHASE 2: HYPER-LOCAL BLITZ (Days 3-10)</h2>
+                        <p>Generate buzz and a physical presence in Freiburg.</p>
+                    </div>
+                     <div class="action-item">
+                        <h4><i class="fas fa-map-marker-alt"></i>In-Person Placements</h4>
+                        <p><strong>Objective:</strong> Secure placements for the "Show & Tell" Kits at key locations.</p>
+                        <ul>
+                            <li>🧸 <strong>Toy Store:</strong> Holzpferd Spielwaren (Holzstrasse 8)</li>
+                            <li>🎨 <strong>Art School:</strong> Jugendkunstschule Freiburg (Marienstraße 1)</li>
+                            <li>🏫 <strong>School:</strong> Lortzing-Grundschule (Lortzingstraße 1)</li>
+                            <li>👋 <strong>Youth Center:</strong> Jugendzentrum St. Georgen (Hartkirchweg 50)</li>
+                            <li>☕ <strong>Kids' Café:</strong> Café Krümel (Schiffstraße 9)</li>
+                        </ul>
+                    </div>
+                     <div class="action-item">
+                        <h4><i class="fas fa-envelope-open-text"></i>The Pitch Email (for Businesses)</h4>
+                        <p>Professional outreach to secure placements.</p>
+                        <div class="code-block">
+                            <strong>Subject:</strong> Eine einzigartige Geschenkidee für Ihre Kunden in Freiburg<br><br>
+                            <strong>Key Offer:</strong> "Für jeden Auftrag, der über Sie kommt, erhalten Sie 10€ Provision als Dankeschön."
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="phase left">
+                <div class="content">
+                    <div class="phase-header phase-3">
+                        <h2>PHASE 3: DIGITAL FOUNDATION (Days 11-20)</h2>
+                        <p>Build online presence and drive initial orders. Target: 2+ Orders.</p>
+                    </div>
+                    <div class="action-item">
+                        <h4><i class="fas fa-share-alt"></i>"Exclusive Birthday" Social Campaign</h4>
+                        <p><strong>CTA:</strong> "Order now for next month's birthday and get a €10 discount!"</p>
+                    </div>
+                    <div class="action-item">
+                        <h4><i class="fas fa-video"></i>Create "60-Second Case Study" Video</h4>
+                        <p>Show the drawing, the model, and the child's reaction. Feature this video on the website's landing page.</p>
+                    </div>
+                     <div class="action-item">
+                        <h4><i class="fas fa-comments"></i>Engage with Local Parent Groups</h4>
+                        <p>DM 10+ Freiburg parent groups. Engage first, sell second.</p>
+                    </div>
+                     <div class="action-item contingency">
+                        <h4><i class="fas fa-exclamation-triangle"></i>Contingency Plan (If < 2 orders)</h4>
+                        <p>Launch a 48-hour "Freiburg Launch Special": 20% Discount + Free Shipping for the first 10 orders.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Phase 4 -->
+            <div class="phase right">
+                <div class="content">
+                    <div class="phase-header phase-4">
+                        <h2>PHASE 4: PARTNERSHIPS & ENGAGEMENT (Days 21-30)</h2>
+                        <p>Scale reach through collaborations. Target: 7-8 Total Orders.</p>
+                    </div>
+                    <div class="action-item">
+                        <h4><i class="fas fa-handshake"></i>Partner with Event Planners</h4>
+                         <p>Contact 3 local planners with a win-win offer: 10% discount for their clients + €10 commission for them.</p>
+                    </div>
+                     <div class="action-item">
+                        <h4><i class="fas fa-user-check"></i>Outreach to "Mom Bloggers"</h4>
+                         <p>Offer a free, custom model in exchange for a story/mention. Personalize the outreach.</p>
+                    </div>
+                     <div class="action-item">
+                        <h4><i class="fas fa-palette"></i>Host a Free Live Workshop</h4>
+                         <p>Venue ideas: Stadtbibliothek Freiburg, Jugendkunstschule. Live-model a drawing and offer an exclusive discount to attendees.</p>
+                    </div>
+                     <div class="action-item">
+                        <h4><i class="fas fa-trophy"></i>Launch "Drawing of the Month" Contest</h4>
+                         <p>Build an email list and gather user-generated content for your gallery. The winner gets a free Basic model.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
